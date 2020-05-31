@@ -46,7 +46,7 @@ class ModelExport(models.Model):
 class ModelExport_xls(models.Model):
     _inherit = 'clv.model_export'
 
-    @api.multi
+    # @api.multi
     def do_model_export_execute_xls_person(self):
 
         self.do_model_export_execute_xls()
@@ -55,7 +55,7 @@ class ModelExport_xls(models.Model):
 class ModelExport_csv(models.Model):
     _inherit = 'clv.model_export'
 
-    @api.multi
+    # @api.multi
     def do_model_export_execute_csv_person(self):
 
         self.do_model_export_execute_csv()
@@ -64,7 +64,7 @@ class ModelExport_csv(models.Model):
 class ModelExport_sqlite(models.Model):
     _inherit = 'clv.model_export'
 
-    @api.multi
+    # @api.multi
     def do_model_export_execute_sqlite_person(self):
 
         self.do_model_export_execute_sqlite()

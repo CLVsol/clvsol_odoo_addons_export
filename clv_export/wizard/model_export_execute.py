@@ -4,7 +4,7 @@
 
 import logging
 
-from odoo import api, fields, models
+from odoo import fields, models
 
 _logger = logging.getLogger(__name__)
 
@@ -25,7 +25,7 @@ class ModelExportExecute(models.TransientModel):
         string='Model Exports',
         default=_default_model_export_ids)
 
-    @api.multi
+    # @api.multi
     def _reopen_form(self):
         self.ensure_one()
         action = {
@@ -38,7 +38,7 @@ class ModelExportExecute(models.TransientModel):
         }
         return action
 
-    @api.multi
+    # @api.multi
     def do_model_export_execute(self):
         self.ensure_one()
 

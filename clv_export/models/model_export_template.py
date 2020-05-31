@@ -2,7 +2,7 @@
 # Copyright (C) 2013-Today  Carlos Eduardo Vercelino - CLVsol
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from odoo import api, fields, models
+from odoo import fields, models
 from odoo import exceptions
 
 
@@ -23,6 +23,6 @@ class ModelExportTemplate(models.Model):
          u'Error! The Code must be unique!'),
     ]
 
-    @api.multi
+    # @api.multi
     def copy(self):
         raise exceptions.ValidationError('It is not possible to duplicate the record, please create a new one.')

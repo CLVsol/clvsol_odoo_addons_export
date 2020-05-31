@@ -51,7 +51,7 @@ class ModelExportTemplateFieldCopy(models.TransientModel):
 
         return defaults
 
-    @api.multi
+    # @api.multi
     def _reopen_form(self):
         self.ensure_one()
         action = {
@@ -64,7 +64,7 @@ class ModelExportTemplateFieldCopy(models.TransientModel):
         }
         return action
 
-    @api.multi
+    # @api.multi
     def do_model_export_template_field_copy(self):
         self.ensure_one()
 

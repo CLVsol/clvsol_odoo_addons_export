@@ -76,7 +76,7 @@
         <field name="name">Model Export Document Item</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">clv.model_export.document_item</field>
-        <field name="view_type">form</field>
+        <!--*field name="view_type">form</field-->
         <field name="view_mode">tree,form</field>
         <field name="search_view_id" ref="clv_model_export_document_item_view_search" />
         <field name="domain">[]</field>

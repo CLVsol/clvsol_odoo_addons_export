@@ -76,7 +76,7 @@
         <field name="name">Model Export Lab Test Criterion</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">clv.model_export.template.lab_test_criterion</field>
-        <field name="view_type">form</field>
+        <!--*field name="view_type">form</field-->
         <field name="view_mode">tree,form</field>
         <field name="search_view_id" ref="clv_model_export_template_lab_test_criterion_view_search" />
         <field name="domain">[]</field>

@@ -130,7 +130,7 @@
         <field name="name">Model Export Templates</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">clv.model_export.template</field>
-        <field name="view_type">form</field>
+        <!--*field name="view_type">form</field-->
         <field name="view_mode">tree,form</field>
         <field name="search_view_id" ref="clv_model_export_template_view_search"/>
         <field name="domain">[]</field>

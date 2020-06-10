@@ -32,10 +32,9 @@
     <act_window 
         id="clv_model_export_refresh_action"
         name="Model Export Refresh"
-        src_model="clv.model_export"
+        binding_model="clv.model_export"
         res_model="clv.model_export.refresh"
         view_mode="form"
-        key2="client_action_multi"
         target="new"
     />
 

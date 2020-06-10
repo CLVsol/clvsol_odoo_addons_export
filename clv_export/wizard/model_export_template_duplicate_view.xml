@@ -37,7 +37,7 @@
     <act_window 
         id="clv_model_export_template_duplicate_action"
         name="Model Export Template Duplicate"
-        src_model="clv.model_export.template"
+        binding_model="clv.model_export.template"
         res_model="clv.model_export.template.duplicate"
         view_mode="form"
         target="new"

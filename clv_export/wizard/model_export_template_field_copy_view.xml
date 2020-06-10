@@ -39,10 +39,9 @@
     <act_window 
         id="clv_model_export_template_field_copy_action"
         name="Model Export Template Field Copy"
-        src_model="clv.model_export.template.field"
+        binding_model="clv.model_export.template.field"
         res_model="clv.model_export.template.field.copy"
         view_mode="form"
-        key2="client_action_multi"
         target="new"
     />
 

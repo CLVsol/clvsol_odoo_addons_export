@@ -38,6 +38,7 @@ class ModelExport(models.Model):
     @api.depends('model_model')
     def compute_model_items(self):
         for r in self:
+            r.model_items = False
             if self.model_model == 'clv.person':
                 r.model_items = 'export_person_ids'
         super().compute_model_items()

@@ -27,7 +27,7 @@ class ModelExportTemplateField(models.Model):
     field_id = fields.Many2one(
         comodel_name='ir.model.fields',
         string='Field',
-        ondelete='restrict',
+        # ondelete='restrict',
         domain="[('model_id','=',model_id)]"
     )
     field_name = fields.Char(string='Name', related='field_id.name', store=False)

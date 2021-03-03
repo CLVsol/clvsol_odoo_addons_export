@@ -29,13 +29,12 @@
     </record>
 
     <!-- More button Action -->
-    <act_window 
-        id="clv_model_export_execute_action"
-        name="Model Export Execute"
-        binding_model="clv.model_export"
-        res_model="clv.model_export.execute"
-        view_mode="form"
-        target="new"
-    />
+    <record id="clv_model_export_execute_action" model="ir.actions.act_window">
+        <field name="name">Model Export Execute</field>
+        <field name="binding_model_id" ref="model_clv_model_export"/>
+        <field name="res_model">clv.model_export.execute</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
 
 </odoo>

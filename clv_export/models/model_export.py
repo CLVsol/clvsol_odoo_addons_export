@@ -112,7 +112,6 @@ class ModelExport(models.Model):
 
         return new_model_export
 
-    # @api.multi
     def write(self, values):
 
         ModelExportField = self.env['clv.model_export.field']
@@ -138,7 +137,6 @@ class ModelExport(models.Model):
 
         return res
 
-    # @api.multi
     def copy(self):
         raise exceptions.ValidationError('It is not possible to duplicate the record, please create a new one.')
 
@@ -157,7 +155,6 @@ class ModelExportTemplate(models.Model):
         store=True
     )
 
-    # @api.multi
     @api.depends('model_export_ids')
     def _compute_count_model_exports(self):
         for r in self:
@@ -238,7 +235,6 @@ class ModelExport_get_value(models.Model):
 class ModelExport_xls(models.Model):
     _inherit = 'clv.model_export'
 
-    # @api.multi
     def do_model_export_execute_xls(self):
 
         start = time()
@@ -345,7 +341,6 @@ class ModelExport_xls(models.Model):
 class ModelExport_csv(models.Model):
     _inherit = 'clv.model_export'
 
-    # @api.multi
     def do_model_export_execute_csv(self):
 
         start = time()
@@ -453,7 +448,6 @@ class ModelExport_csv(models.Model):
 class ModelExport_sqlite(models.Model):
     _inherit = 'clv.model_export'
 
-    # @api.multi
     def do_model_export_execute_sqlite(self):
 
         start = time()

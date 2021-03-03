@@ -17,7 +17,7 @@ class AbstractModelExport(models.AbstractModel):
     model_id = fields.Many2one(
         comodel_name='ir.model',
         string='Model',
-        ondelete='restrict',
+        # ondelete='restrict',
         # domain="[('model','in',['clv.person','clv.address'])]"
     )
     model_model = fields.Char(

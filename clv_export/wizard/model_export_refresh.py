@@ -26,7 +26,6 @@ class ModelExportRefresh(models.TransientModel):
         string='Model Exports',
         default=_default_model_export_ids)
 
-    # @api.multi
     def _reopen_form(self):
         self.ensure_one()
         action = {
@@ -39,7 +38,6 @@ class ModelExportRefresh(models.TransientModel):
         }
         return action
 
-    # @api.multi
     def do_model_export_refresh(self):
         self.ensure_one()
 

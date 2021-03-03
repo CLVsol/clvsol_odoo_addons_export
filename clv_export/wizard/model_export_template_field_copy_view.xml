@@ -36,13 +36,12 @@
     </record>
 
     <!-- More button Action -->
-    <act_window 
-        id="clv_model_export_template_field_copy_action"
-        name="Model Export Template Field Copy"
-        binding_model="clv.model_export.template.field"
-        res_model="clv.model_export.template.field.copy"
-        view_mode="form"
-        target="new"
-    />
+    <record id="clv_model_export_template_field_copy_action" model="ir.actions.act_window">
+        <field name="name">Model Export Template Field Copy</field>
+        <field name="binding_model_id" ref="model_clv_model_export_template_field"/>
+        <field name="res_model">clv.model_export.template.field.copy</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
 
 </odoo>

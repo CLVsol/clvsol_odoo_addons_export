@@ -23,6 +23,5 @@ class ModelExportTemplate(models.Model):
          u'Error! The Code must be unique!'),
     ]
 
-    # @api.multi
     def copy(self):
         raise exceptions.ValidationError('It is not possible to duplicate the record, please create a new one.')

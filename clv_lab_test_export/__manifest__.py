@@ -5,7 +5,7 @@
 {
     'name': 'Lab Test Export',
     'summary': 'Lab Test Export Module used in CLVsol Solutions.',
-    'version': '12.0.4.0',
+    'version': '14.0.5.0',
     'author': 'Carlos Eduardo Vercelino - CLVsol',
     'category': 'CLVsol Solutions',
     'license': 'AGPL-3',

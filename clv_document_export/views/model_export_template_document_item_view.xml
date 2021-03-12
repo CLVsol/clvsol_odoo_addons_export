@@ -62,7 +62,7 @@
                 <field name="name"/>
                 <field name="model_export_display"/>
                 <separator/>
-                <filter string="Archived" name="inactive" domain="[('active','=',False)]"/>
+                <!--filter string="Archived" name="inactive" domain="[('active','=',False)]"/-->
                 <group name="group_by" expand="0" string="Group By...">
                     <filter name="group_by_model_export_template_id" string="Model Export Template" domain="[]" context="{'group_by': 'model_export_template_id'}"/>
                     <filter name="group_by_document_item_document_type_id" string="Model Export Template Document Type" domain="[]" context="{'group_by': 'document_item_document_type_id'}"/>

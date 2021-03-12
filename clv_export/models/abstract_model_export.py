@@ -83,6 +83,8 @@ class AbstractModelExport(models.AbstractModel):
 
     @api.depends('model_model')
     def compute_model_items(self):
+        for r in self:
+            r.model_items = False
         return False
 
     def model_export_dir_path(self, export_type):

@@ -13,10 +13,13 @@ class ModelExportTemplateDuplicate(models.TransientModel):
     _description = 'Model Export Template Duplicate'
     _name = 'clv.model_export.template.duplicate'
 
+    def _default_model_export_template_ids(self):
+        return self._context.get('active_ids')
     model_export_template_ids = fields.Many2many(
         comodel_name='clv.model_export.template',
         relation='clv_model_export_template_duplicate_rel',
-        string='Model Export Templates'
+        string='Model Export Templates',
+        default=_default_model_export_template_ids
     )
 
     new_name = fields.Char(
@@ -33,8 +36,6 @@ class ModelExportTemplateDuplicate(models.TransientModel):
     def default_get(self, field_names):
 
         defaults = super(ModelExportTemplateDuplicate, self).default_get(field_names)
-
-        defaults['model_export_template_ids'] = self.env.context['active_ids']
 
         ModelExportTemplate = self.env['clv.model_export.template']
         model_export_template_id = self._context.get('active_id')

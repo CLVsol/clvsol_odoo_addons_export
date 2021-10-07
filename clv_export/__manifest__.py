@@ -29,6 +29,7 @@
         'views/export_menu_view.xml',
         'wizard/model_export_refresh_view.xml',
         'wizard/model_export_execute_view.xml',
+        'wizard/model_export_create_template_view.xml',
         'wizard/model_export_template_duplicate_view.xml',
         'wizard/model_export_template_field_copy_view.xml',
     ],

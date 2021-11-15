@@ -231,6 +231,78 @@ class ModelExport_get_value(models.Model):
         else:
             return None
 
+    @api.model
+    def _get_raw_value(self, item, field, export_date_format, export_datetime_format):
+
+        if field.ttype == 'date':
+            cmd = 'item.' + field.name
+            if eval(cmd) is not False:
+                # date_value = eval(cmd)
+                date_value = str(eval(cmd))
+                # date_obj = datetime.strptime(date_value, DEFAULT_SERVER_DATE_FORMAT)
+                date_obj = datetime.strptime(date_value, "%Y-%m-%d")
+                try:
+                    date_formated = datetime.strftime(date_obj, export_date_format)
+                except Exception:
+                    date_formated = date_value
+                cmd = '"' + date_formated + '"'
+            else:
+                cmd = 'False'
+        elif field.ttype == 'datetime':
+            cmd = 'item.' + field.name
+            if eval(cmd) is not False:
+                # datetime_value = eval(cmd)
+                datetime_value = str(eval(cmd))
+                # datetime_obj = datetime.strptime(datetime_value, DEFAULT_SERVER_DATETIME_FORMAT)
+                try:
+                    datetime_obj = datetime.strptime(datetime_value, "%Y-%m-%d %H:%M:%S.%f")
+                except ValueError:
+                    datetime_obj = datetime.strptime(datetime_value, "%Y-%m-%d %H:%M:%S")
+                try:
+                    datetime_formated = datetime.strftime(datetime_obj, export_datetime_format)
+                except Exception:
+                    datetime_formated = datetime_value
+                cmd = '"' + datetime_formated + '"'
+            else:
+                cmd = 'False'
+        elif field.ttype == 'many2many':
+            cmd = 'item.' + field.name
+            ids = eval(cmd)
+            if len(ids) == 0:
+                cmd = 'False'
+            elif len(ids) == 1:
+                for id_ in ids:
+                    ids_str = str(id_.id)
+                cmd = ids_str
+            else:
+                ids_str = '"['
+                for id_ in ids:
+                    if ids_str == '"[':
+                        ids_str += str(id_.id)
+                    else:
+                        ids_str += ', ' + str(id_.id)
+                ids_str += ']"'
+                cmd = ids_str
+        elif field.ttype == 'many2one':
+            cmd = 'item.' + field.name + '.id'
+        elif field.ttype == 'one2many':
+            cmd = 'item.' + field.name
+            cmd = str(len(eval(cmd)))
+        elif field.ttype == 'binary':
+            cmd = 'False'
+        else:
+            cmd = 'item.' + field.name
+
+        eval_cmd = False
+        try:
+            eval_cmd = eval(cmd)
+        except Exception as e:
+            _logger.warning(u'%s %s [%s]', '>>>>>>>>>> Exception: ', e, field.name)
+        if cmd != 'False' and eval_cmd is not False:
+            return eval(cmd)
+        else:
+            return None
+
 
 class ModelExport_xls(models.Model):
     _inherit = 'clv.model_export'
@@ -311,10 +383,16 @@ class ModelExport_xls(models.Model):
                 col_nr = 0
                 if self.export_all_fields is False:
                     for field in self.model_export_field_ids:
-                        row.write(col_nr, self._get_value(
-                            item, field.field_id,
-                            self.export_date_format, self.export_datetime_format)
-                        )
+                        if field.raw_value:
+                            row.write(col_nr, self._get_raw_value(
+                                item, field.field_id,
+                                self.export_date_format, self.export_datetime_format)
+                            )
+                        else:
+                            row.write(col_nr, self._get_value(
+                                item, field.field_id,
+                                self.export_date_format, self.export_datetime_format)
+                            )
                         col_nr += 1
 
                 else:
@@ -416,10 +494,16 @@ class ModelExport_csv(models.Model):
                 col_nr = 0
                 if self.export_all_fields is False:
                     for field in self.model_export_field_ids:
-                        row.insert(col_nr, self._get_value(
-                            item, field.field_id,
-                            self.export_date_format, self.export_datetime_format)
-                        )
+                        if field.raw_value:
+                            row.insert(col_nr, self._get_raw_value(
+                                item, field.field_id,
+                                self.export_date_format, self.export_datetime_format)
+                            )
+                        else:
+                            row.insert(col_nr, self._get_value(
+                                item, field.field_id,
+                                self.export_date_format, self.export_datetime_format)
+                            )
                         col_nr += 1
 
                 else:
@@ -568,10 +652,16 @@ class ModelExport_sqlite(models.Model):
                 values = ()
                 if self.export_all_fields is False:
                     for field in self.model_export_field_ids:
-                        values += (self._get_value(
-                            item, field.field_id,
-                            self.export_date_format, self.export_datetime_format),
-                        )
+                        if field.raw_value:
+                            values += (self._get_raw_value(
+                                item, field.field_id,
+                                self.export_date_format, self.export_datetime_format),
+                            )
+                        else:
+                            values += (self._get_value(
+                                item, field.field_id,
+                                self.export_date_format, self.export_datetime_format),
+                            )
                         col_nr += 1
 
                 else:

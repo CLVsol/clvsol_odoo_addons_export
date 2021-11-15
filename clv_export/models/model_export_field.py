@@ -33,6 +33,8 @@ class ModelExportField(models.Model):
     field_name = fields.Char(string='Name', related='field_id.name', store=False)
     field_ttype = fields.Selection(string='TType', related='field_id.ttype', store=False)
 
+    raw_value = fields.Boolean(string='Raw Value', default=False)
+
     sequence = fields.Integer(
         string='Sequence',
         default=10

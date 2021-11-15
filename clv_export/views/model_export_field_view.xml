@@ -27,6 +27,7 @@
                                 <field name="field_id" options="{'no_open': False, 'no_create': True}"/>
                                 <field name="field_name" readonly="True"/>
                                 <field name="field_ttype" readonly="True"/>
+                                <field name="raw_value"/>
                             </group>
                         </page>
                         <page name="settings" string="Settings" groups="clv_base.group_reguser" invisible="False">
@@ -72,9 +73,10 @@
                 <field name="field_id"/>
                 <field name="field_name"/>
                 <field name="field_ttype"/>
+                <field name="model_export_display"/>
                 <field name="sequence"/>
                 <field name="name"/>
-                <field name="model_export_display"/>
+                <field name="raw_value"/>
             </tree>
         </field>
     </record>
@@ -87,6 +89,8 @@
                 <field name="model_export_id"/>
                 <field name="field_id"/>
                 <field name="name"/>
+                <field name="field_ttype"/>
+                <field name="raw_value"/>
                 <field name="model_export_display"/>
                 <separator/>
                 <!--filter string="Archived" name="inactive" domain="[('active','=',False)]"/-->
@@ -148,6 +152,7 @@
                                 <field name="field_id" readonly="True"/>
                                 <field name="field_name"/>
                                 <field name="field_ttype"/>
+                                <field name="raw_value" readonly="True"/>
                                 <field name="name"/>
                                 <field name="model_export_display" readonly="True"/>
                             </tree>
